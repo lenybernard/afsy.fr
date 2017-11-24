@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}AFSY.fr{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -11,13 +11,13 @@
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body class="mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+    <body class="{% block body_class %}mdl-color--grey-100 mdl-color-text--grey-700 mdl-base{% endblock %}">
         {% block body %}
-            <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+            <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout">
                 {% block body_header %}
-                <header class="demo-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
+                <header class="demo-header mdl-layout__header mdl-layout__header--scroll mdl-color-text--grey-800">
                     <div class="mdl-layout__header-row">
-                        <span class="mdl-layout-title">💝 Calendrier de l'avent de l'afsy</span>&nbsp; - &nbsp;<span>HEADLESS IS&nbsp;<strong>MORE</strong></span>
+                        <span class="mdl-layout-title">AFSY.fr</span></span>
                         <div class="mdl-layout-spacer"></div>
                         <nav class="mdl-navigation">
                             <a href="{{ path('homepage') }}" class="mdl-navigation__link">Accueil</a>

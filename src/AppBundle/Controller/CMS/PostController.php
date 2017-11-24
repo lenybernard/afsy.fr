@@ -36,8 +36,7 @@ class PostController extends Controller
             ->where('fields.category.sys.id', '2xh0nTld5O8kIsu0Qqs0IQ')
             ->orderBy('fields.date');
 
-        return $this->render('cms/post/index.html.twig', [
-            'title' => 'Calendrier de l\'avent 2017',
+        return $this->render('cms/post/advent.html.twig', [
             'entries' => $client->getEntries($query)
         ]);
     }

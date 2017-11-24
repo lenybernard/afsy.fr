@@ -1,5 +1,6 @@
 {% extends "::base.html.twig" %}
 
+{% block title %}{{ post.getTitle() }} - {{ parent() }}{% endblock %}
 {% block body_content_ribbon %}<div class="demo-ribbon"></div>{% endblock body_content_ribbon %}
 {% block body_content_main %}
     <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>

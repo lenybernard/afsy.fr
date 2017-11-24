@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Calendrier de l'avent 2017 - {{ parent() }}{% endblock %}
+{% block body_class %}mdl-color-text--grey-700 mdl-base{% endblock %}
+{% block body_content %}
+    {% set colors = [
+        '#F7E8ED', '#F2D9E6', '#ECC6DE', '#E0ECF5', '#DDF4DE', '#F0F1D5', '#EEDECD', '#B8E6B3', '#ABE3D8', '#E0E1F5', '#F7E8ED', '#F2D9E6', '#DFD1F0', '#E0ECF5', '#DDF4DE', '#F0F1D5', '#EEDECD', '#B8E6B3', '#ABE3D8', '#E0E1F5', '#DFD1F0', '#DFD1F0'
+    ] %}
+
+    <div class="calendar-wrap">
+        <div class="calendar">
+            {% for post in entries %}
+                <div class="cube"
+                     data-bg-color="{{ attribute(colors, loop.index0) }}"
+                     data-title="{{ post.getTitle() }}"
+                     data-bg-image="{{ post.getFeaturedImage().file.url ~ "?fm=jpg&w=300&h=300" }}"
+                ></div>
+            {% endfor %}
+            {% for i in 0..(23 - entries|length) %}
+                <div class="cube" data-inactive data-bg-color="#6161616" data-title="Coming soon"></div>
+            {% endfor %}
+        </div>
+        <div class="content">
+            {% for post in entries %}
+                <div class="content__block">
+                    <h3 class="content__title">{{ post.getTitle() }}</h3>
+                    <p class="content__description">{{ post.getBody()|markdown|striptags|truncate(30) }}</p>
+                    <p class="content__meta">
+                        {% for author in post.getAuthor() %}
+                            {{ author.getName() }}{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                        <br/><br/>
+                        <a href="{{ path('app_cms_post_show', {
+                            'slug': post.getSlug()
+                        }) }}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                            Lire l'article
+                        </a>
+                    </p>
+                </div>
+            {% endfor %}
+            <div class="content__number">0</div>
+            <button class="btn-back" aria-label="Retour">&crarr;</button>
+        </div><!-- /content -->
+    </div>
+{% endblock %}
+
+{# @credit https://tympanus.net/codrops/2016/11/09/cubes-advent-calendar/ #}
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('tympanus_advent/css/normalize.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('tympanus_advent/css/common.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('tympanus_advent/css/style2.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('tympanus_advent/css/custom.css') }}"/>
+{% endblock stylesheets %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>document.documentElement.className = 'js';</script>
+
+    <script src="{{ asset('tympanus_advent/js/charming.min.js') }}"></script>
+    <script src="{{ asset('tympanus_advent/js/anime.min.js') }}"></script>
+    <script src="{{ asset('tympanus_advent/js/textfx.js') }}"></script>
+    <script src="{{ asset('tympanus_advent/js/main2.js') }}"></script>
+{% endblock javascripts %}

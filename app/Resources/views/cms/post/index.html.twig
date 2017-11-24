@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 
-
+{% block title %}Blog - {{ parent() }}{% endblock %}
 {% block body_content %}
 <section class="section--center mdl-grid">
     <h1>{{ title|default('Blog') }}</h1>
@@ -13,7 +13,13 @@
                     title: post.getTitle(),
                     author: {
                         name: post.getAuthor()|first.getName(),
-                        picture: post.getAuthor()|first.getName(),
+                        picture: post.getAuthor()|first.getProfilePhoto()|default(
+                        {
+                            file:{
+                                url: 'https://www.gravatar.com/avatar/00000000000000000000000000000000'
+                            }
+                        }
+                        ).file.url ~ "?fm=jpg&w=215&h=215",
                     },
                     description: post.getBody(),
                     url: path('app_cms_post_show', {

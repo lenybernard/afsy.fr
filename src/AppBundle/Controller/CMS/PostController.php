@@ -26,6 +26,23 @@ class PostController extends Controller
     }
 
     /**
+     * @Route("/calendrier-avent-2017")
+     */
+    public function advent2017Action()
+    {
+        $client = $this->get('contentful.delivery');
+        $query = new \Contentful\Delivery\Query;
+        $query->setContentType(self::CONTENT_TYPE_POST)
+            ->where('fields.category.sys.id', '2xh0nTld5O8kIsu0Qqs0IQ')
+            ->orderBy('fields.date');
+
+        return $this->render('cms/post/index.html.twig', [
+            'title' => 'Calendrier de l\'avent 2017',
+            'entries' => $client->getEntries($query)
+        ]);
+    }
+
+    /**
      * @Route("/blog/{slug}")
      */
     public function showAction($slug)

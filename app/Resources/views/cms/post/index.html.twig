@@ -26,9 +26,7 @@
                         'slug': post.getSlug()
                     }),
                     date: post.getDate()|date('d/m/Y'),
-                    category: {
-                        title: post.getCategory().0.getTitle()
-                    },
+                    category: post.getCategory()|first,
                     picture: post.getFeaturedImage()|default(
                         {
                             file:{

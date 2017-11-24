@@ -5,10 +5,12 @@
     <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
         <div class="mdl-card__supporting-text">
             <h2>{{ post.title }} <small>par {{ post.author.name }}</small></h2>
-            <strong class="">
-                <em>
-                    {{ post.category.title }}
-                </em>
+            <strong>
+                <a href="{{ path('app_cms_post_listbycategory', {
+                    'slug': post.category.getSlug()
+                }) }}">
+                    {{ post.category.getTitle() }}
+                </a>
             </strong>
             {% for tag in [] %}
             {% if not loop.last %}<br/>{% endif %}

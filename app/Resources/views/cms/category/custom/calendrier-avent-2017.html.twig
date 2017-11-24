@@ -13,7 +13,7 @@
                 <div class="cube"
                      data-bg-color="{{ attribute(colors, loop.index0) }}"
                      data-title="{{ post.getTitle() }}"
-                     data-bg-image="{{ post.getFeaturedImage().file.url ~ "?fm=jpg&w=300&h=300" }}"
+                     {% if post.getFeaturedImage() %}data-bg-image="{{ post.getFeaturedImage().file.url ~ "?fm=jpg&w=300&h=300" }}"{% endif %}
                 ></div>
             {% endfor %}
             {% for i in 0..(23 - entries|length) %}

@@ -9,7 +9,11 @@
             {% block body_breadcrumb %}
                 <a href="{{ path('app_cms_post_index') }}">Blog</a> &gt;
                 {% for category in post.getCategory() %}
-                    {{ category.getTitle() }}{% if not loop.last %},{% endif %}
+                    <a href="{{ path('app_cms_post_listbycategory', {
+                        'slug': category.getSlug()
+                    }) }}">
+                        {{ category.getTitle() }}
+                    </a>{% if not loop.last %},{% endif %}
                 {% endfor %}
                 &gt; {{ post.getTitle() }}
             {% endblock %}

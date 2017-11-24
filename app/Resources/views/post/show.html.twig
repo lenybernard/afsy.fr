@@ -1,0 +1,22 @@
+{% extends "::base.html.twig" %}
+
+{% block body_content_ribbon %}<div class="demo-ribbon"></div>{% endblock body_content_ribbon %}
+{% block body_content_main %}
+    <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+    <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+        <div class="demo-crumbs mdl-color-text--grey-500">
+            {% block body_breadcrumb %}
+                <a href="{{ path('app_post_index') }}">Blog</a> &gt;
+                {% for category in post.getCategory() %}
+                    {{ category.getTitle() }}{% if not loop.last %},{% endif %}
+                {% endfor %}
+                &gt; {{ post.getTitle() }}
+            {% endblock %}
+        </div>
+        <h1>{{ post.getTitle() }}</h1>
+        {% if post.getFeaturedImage %}
+            <img src="{{ post.getFeaturedImage().file.url ~ "?fm=jpg&w=1100" }}"/>
+        {% endif %}
+        {{ post.getBody()|markdown|raw }}
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+    <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color-text--white"
+        {% if post.picture %}style="background-image: url({{ post.picture }}); background-position: center;"{% endif %}>
+    </header>
+    <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+        <div class="mdl-card__supporting-text">
+            <h2>{{ post.title }} <small>par {{ post.author.name }}</small></h2>
+            <strong class="">
+                <em>
+                    {{ post.category.title }}
+                </em>
+            </strong>
+            {% for tag in [] %}
+            {% if not loop.last %}<br/>{% endif %}
+            {% endfor %}
+            {{ post.description|markdown|striptags|truncate(150)|raw }}
+        </div>
+        <div class="mdl-card__actions">
+            <a href="{{ post.url }}" class="mdl-button">Lire l'article</a>
+        </div>
+    </div>
+</section>

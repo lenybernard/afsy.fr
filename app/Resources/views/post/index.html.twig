@@ -1,0 +1,37 @@
+{% extends "base.html.twig" %}
+
+
+{% block body_content %}
+<section class="section--center mdl-grid">
+    <h1>{{ title|default('Blog') }}</h1>
+</section>
+
+<main class="mdl-layout__content">
+        {% for post in entries %}
+            {% include 'post/_item.html.twig' with {
+                post: {
+                    title: post.getTitle(),
+                    author: {
+                        name: post.getAuthor()|first.getName(),
+                        picture: post.getAuthor()|first.getName(),
+                    },
+                    description: post.getBody(),
+                    url: path('app_post_show', {
+                        'slug': post.getSlug()
+                    }),
+                    date: post.getDate()|date('d/m/Y'),
+                    category: {
+                        title: post.getCategory().0.getTitle()
+                    },
+                    picture: post.getFeaturedImage()|default(
+                        {
+                            file:{
+                                url: 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=identicon&f=y'
+                            }
+                        }
+                    ).file.url ~ "?fm=jpg&w=215&h=215",
+                }
+            } %}
+        {% endfor %}
+</main>
+{% endblock %}

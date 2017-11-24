@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace AppBundle\Controller\CMS;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -20,12 +20,11 @@ class PostController extends Controller
         $query = new \Contentful\Delivery\Query;
         $query->setContentType(self::CONTENT_TYPE_POST)->orderBy('fields.date', true);
 
-        return $this->render('post/index.html.twig', [
+        return $this->render('cms/post/index.html.twig', [
             'entries' => $client->getEntries($query)
         ]);
     }
 
-    /**
     /**
      * @Route("/blog/{slug}")
      */
@@ -37,7 +36,7 @@ class PostController extends Controller
             ->where('fields.slug', $slug, 'match')
             ->setLimit(1);
 
-        return $this->render('post/show.html.twig', [
+        return $this->render('cms/post/show.html.twig', [
             'post' => $client->getEntries($query)[0]
         ]);
     }

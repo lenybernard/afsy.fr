@@ -286,3 +286,7 @@ section.section--center .section__text:not(:last-child) {
 .demo-footer .mdl-mini-footer--link-list a {
     font-size: 13px;
 }
+
+.mdl-layout__header-row .mdl-navigation__link {
+    color: #424242;
+}

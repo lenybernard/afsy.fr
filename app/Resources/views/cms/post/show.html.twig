@@ -6,7 +6,7 @@
     <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
         <div class="demo-crumbs mdl-color-text--grey-500">
             {% block body_breadcrumb %}
-                <a href="{{ path('app_post_index') }}">Blog</a> &gt;
+                <a href="{{ path('app_cms_post_index') }}">Blog</a> &gt;
                 {% for category in post.getCategory() %}
                     {{ category.getTitle() }}{% if not loop.last %},{% endif %}
                 {% endfor %}

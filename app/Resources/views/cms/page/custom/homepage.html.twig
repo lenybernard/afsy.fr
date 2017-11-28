@@ -59,4 +59,30 @@
             </div>
         </div>
     </section>
+    <section class="feature-section mdl-color--gray-100  mdl-typography--text-center">
+        <h3>
+            Les événements
+        </h3>
+        {{ render(path('app_cms_event_renderlist', { 'max': 10 })) }}
+    </section>
+
+    {{ page.getText()|markdown|raw }}
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .demo-card-wide > .mdl-card__title {
+            color: #fff;
+            height: 176px;
+            background: url('https://getmdl.io/assets/demos/welcome_card.jpg') center / cover;
+        }
+        .demo-card-wide > .mdl-card__menu {
+            color: #fff;
+        }
+    </style>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ googleMapAPIKEY }}"></script>
 {% endblock %}

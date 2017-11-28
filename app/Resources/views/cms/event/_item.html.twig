@@ -1,0 +1,40 @@
+<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+    <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color-text--white">
+        <div id="{{ event.getId() }}-map" style="width: 100%; height: 100%;"></div>
+    </header>
+    <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+        {% if event.getDate() < date('now') %}<span style="right: 20px; top: 20px; position: absolute;">Évenement passé</span>{% endif %}
+        <div class="mdl-card__supporting-text">
+            <h4>{{ event.getTitle() }}</h4>
+            <small>{{ event.getDate()|date('d/m/Y') }}</small>
+            {% for tag in event.getTags() %}
+                <strong>{{ tag }}</strong>
+            {% endfor %}
+            <div>
+                {{ event.getDescription() }}
+            </div>
+        </div>
+        <div class="mdl-card__actions">
+            <a href="{{ event.getLink() }}" class="mdl-button">Plus d'info</a>
+        </div>
+    </div>
+</section>
+<br/>
+<script>
+    function r(f){/in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+    r(function(){
+        initMap{{ event.getId() }}();
+    });
+    function initMap{{ event.getId() }}() {
+        var eventLocation{{ event.getId() }} = {lat: {{ event.getLocation().latitude }}, lng: {{ event.getLocation().longitude }} };
+        var map{{ event.getId() }} = new google.maps.Map(document.getElementById('{{ event.getId() }}-map'), {
+            zoom: 13,
+            center: eventLocation{{ event.getId() }},
+            disableDefaultUI: true
+        });
+        var marker{{ event.getId() }} = new google.maps.Marker({
+            position: eventLocation{{ event.getId() }},
+            map: map{{ event.getId() }}
+        });
+    }
+</script>

@@ -38,6 +38,7 @@ twig:
     strict_variables: '%kernel.debug%'
     globals:
         disqusShortname: dev-afsy-fr
+        googleMapAPIKEY: '%googleMapsApiKey%'
 
 # Doctrine Configuration
 doctrine:

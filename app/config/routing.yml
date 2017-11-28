@@ -1,6 +1,9 @@
 post:
     resource: '@AppBundle/Controller/CMS/PostController.php'
     type: annotation
+event:
+    resource: '@AppBundle/Controller/CMS/EventController.php'
+    type: annotation
 page:
     resource: '@AppBundle/Controller/CMS/PageController.php'
     type: annotation

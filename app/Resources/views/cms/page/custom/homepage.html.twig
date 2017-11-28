@@ -1,0 +1,62 @@
+{% extends "::base.html.twig" %}
+
+{% block body_content %}
+    <section class="feature-section mdl-typography--text-center">
+        <h1 class="slogan logo-font">Association Francophone des Utilisateurs de Symfony</h1>
+        <h2 class="sub-slogan logo-font">Groupe de professionnels du Web passionnés par le framework PHP Symfony.</h2>
+        <!-- Accent-colored raised button with ripple -->
+        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+           href="https://groups.google.com/forum/#!forum/asso-afsy">
+            Rejoindre la liste de discussion
+        </a>
+    </section>
+    <section class="feature-section mdl-color--green-300  mdl-typography--text-center">
+        <h3 class="mdl-color-text--white">
+            Nos objectifs
+        </h3>
+        <div class="content-grid mdl-grid">
+
+            <div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet demo-card-wide mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title" style="background-image: url('https://images.contentful.com/ukmha2pdldgt/27UEYQczasCYeeawcuyags/0ed4b2533e6b6839c2135e0cdefcd087/hands-people-woman-meeting.jpg?fm=jpg&w=350&h=350')">
+                    <h2 class="mdl-card__title-text">Promouvoir</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    Promouvoir l'utilisation du framework Symfony et évangéliser les bonnes pratiques de développement auprès des entreprises et des universitaires.
+                </div>
+                {#<div class="mdl-card__actions mdl-card--border">
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                        Get Started
+                    </a>
+                </div>#}
+            </div>
+            <div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet demo-card-wide mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title" style="background-image: url('https://images.contentful.com/ukmha2pdldgt/E7chHzCvDMsAsWsiEWG8I/e548644bafda69991c092310d9b591d5/pexels-photo-301988.jpeg?fm=jpg&w=350&h=350')">
+                    <h2 class="mdl-card__title-text">Apprendre</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    Organisons ponctuellement des soirées gratuites accompagnées de conférences ou d'ateliers de découverte de Symfony ainsi que les traditionnels « sfPots », dans plusieurs villes en France.
+                </div>
+                {#<div class="mdl-card__actions mdl-card--border">
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                        Get Started
+                    </a>
+                </div>#}
+            </div>
+            <div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet demo-card-wide mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title" style="background-image: url('https://images.contentful.com/ukmha2pdldgt/6Fac9YvN60eIuEosAAoKMu/ae46bba74e61417e1bee149225950e2e/pexels-photo-375467.jpeg?fm=jpg&w=350&h=350')">
+                {#<div class="mdl-card__title" style="background-image: url('https://images.contentful.com/ukmha2pdldgt/4WRunpTVQk8mOoegk2IOAM/fe3133df5d03384224e1f653f80d81a9/pexels-photo-440581.jpeg?fm=jpg&w=350&h=350')">#}
+                    <h2 class="mdl-card__title-text">Échanger</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    Les « sfPots » sont des rendez-vous sociaux informels, gratuits et ouverts à tous.
+                    Ils ont lieu une fois par mois avec une ou deux présentations, et se prolongent autour d'une bière ou d'un repas dans un bar, un pub ou un restaurant.
+                </div>
+                {#<div class="mdl-card__actions mdl-card--border">
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                        Get Started
+                    </a>
+                </div>#}
+            </div>
+        </div>
+    </section>
+{% endblock %}

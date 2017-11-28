@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Templating\EngineInterface;
 
 class PageController extends Controller
 {
@@ -13,7 +14,7 @@ class PageController extends Controller
      * @Route("/", name="homepage")
      * @Route("/{slug}", name="page_show")
      */
-    public function showAction(Request $request, $slug = 'homepage')
+    public function showAction(EngineInterface $twigEngine, $slug = 'homepage')
     {
         $client = $this->get('contentful.delivery');
         $query = new \Contentful\Delivery\Query;
@@ -25,8 +26,14 @@ class PageController extends Controller
         if (!$entry) {
             throw new NotFoundHttpException;
         }
+
+        //seek for category custom template
+        $template = sprintf('cms/page/custom/%s.html.twig', $slug);
+        if (!$twigEngine->exists($template) ) {
+            $template = 'cms/page/show.html.twig';
+        }
         // replace this example code with whatever you need
-        return $this->render('cms/page/show.html.twig', [
+        return $this->render($template, [
             'page' => $entry,
         ]);
     }

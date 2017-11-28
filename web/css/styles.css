@@ -310,3 +310,30 @@ section.section--center .section__text:not(:last-child) {
     font-size: 14px;
     font-weight: 500;
 }
+
+.slogan {
+    font-size: 40px;
+    padding-top: 160px;
+}
+.sub-slogan {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.logo-font {
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    line-height: 1;
+    color: #767777;
+    font-weight: 500;
+}
+
+.text-center {
+    text-align: center;
+}
+.feature-section {
+    padding: 50px 15px;
+}
+
+.content-grid {
+    max-width: 960px;
+}

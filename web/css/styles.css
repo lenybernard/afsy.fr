@@ -273,6 +273,9 @@ section.section--center .section__text:not(:last-child) {
     padding: 80px 56px;
     margin-bottom: 80px;
 }
+.demo-content img {
+    max-width: 100%;
+}
 
 .demo-layout.is-small-screen .demo-content {
     padding: 40px 28px;

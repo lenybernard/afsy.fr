@@ -19,9 +19,6 @@
             {% endblock %}
         </div>
         <h1>{{ post.getTitle() }}</h1>
-        {% if post.getFeaturedImage %}
-            <img src="{{ post.getFeaturedImage().file.url ~ "?fm=jpg&w=1100" }}"/>
-        {% endif %}
         {{ post.getBody()|markdown|raw }}
         {% if post.getComments() %}
             <div id="disqus_thread"></div>
@@ -41,4 +38,14 @@
             <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         {% endif %}
     </div>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 {% endblock %}

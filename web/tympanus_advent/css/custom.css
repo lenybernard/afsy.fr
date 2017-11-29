@@ -9,7 +9,7 @@
 .cube__side--back {
 	color: transparent !important;
 	background-position: center;
-	background-size: contain;
+	background-size: cover;
 	border: 0;
 }
 

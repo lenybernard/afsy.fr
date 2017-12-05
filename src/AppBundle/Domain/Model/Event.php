@@ -1,7 +1,6 @@
 <?php
 namespace AppBundle\Domain\Model;
 
-use Contentful\Location;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class Event

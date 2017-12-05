@@ -1,0 +1,81 @@
+{% extends "::base.html.twig" %}
+
+{% block body_content_ribbon %}<div class="demo-ribbon"></div>{% endblock body_content_ribbon %}
+{% block body_content_main %}
+    <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+    <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+        <h1>Proposez un événement</h1>
+        {{ form_start(form) }}
+            {{ form_row(form.title) }}
+            {{ form_row(form.date) }}
+            {{ form_widget(form.location) }}
+            <div id="previewMap" style="width: 300px; height: 200px;"></div>
+            {{ form_rest(form) }}
+        <input type="submit"/>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+{% block gmapExtraAttributes %}&libraries=places&callback=initMap{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('previewMap'), {
+                center: {lat: 47.212205, lng: -1.550555},
+                zoom: 13
+            });
+            var input = /** @type {!HTMLInputElement} */(
+                document.getElementById('event_location_address'));
+            var latInput = /** @type {!HTMLInputElement} */(
+                document.getElementById('event_location_latitude'));
+            var longInput = /** @type {!HTMLInputElement} */(
+                document.getElementById('event_location_longitude'));
+
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+            var autocomplete = new google.maps.places.Autocomplete(input);
+            autocomplete.bindTo('bounds', map);
+
+            var infowindow = new google.maps.InfoWindow();
+            var marker = new google.maps.Marker({
+                map: map,
+                anchorPoint: new google.maps.Point(0, -29)
+            });
+
+            autocomplete.addListener('place_changed', function() {
+                infowindow.close();
+                var place = autocomplete.getPlace();
+                if (!place.geometry) {
+                    // User entered the name of a Place that was not suggested and
+                    // pressed the Enter key, or the Place Details request failed.
+                    window.alert("No details available for input: '" + place.name + "'");
+                    return;
+                }
+
+                latInput.value = place.geometry.location.lat();
+                longInput.value = place.geometry.location.lng();
+
+                // If the place has a geometry, then present it on a map.
+                if (place.geometry.viewport) {
+                    map.fitBounds(place.geometry.viewport);
+                } else {
+                    map.setCenter(place.geometry.location);
+                    map.setZoom(17);  // Why 17? Because it looks good.
+                }
+
+                var address = '';
+                if (place.address_components) {
+                    address = [
+                        (place.address_components[0] && place.address_components[0].short_name || ''),
+                        (place.address_components[1] && place.address_components[1].short_name || ''),
+                        (place.address_components[2] && place.address_components[2].short_name || '')
+                    ].join(' ');
+                }
+
+                infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+                infowindow.open(map, marker);
+            });
+        }
+    </script>
+{% endblock %}

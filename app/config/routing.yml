@@ -1,6 +1,9 @@
 post:
     resource: '@AppBundle/Controller/CMS/PostController.php'
     type: annotation
+goals:
+    resource: '@AppBundle/Controller/CMS/GoalsController.php'
+    type: annotation
 event:
     resource: '@AppBundle/Controller/CMS/EventController.php'
     type: annotation

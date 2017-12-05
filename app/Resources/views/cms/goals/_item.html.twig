@@ -1,0 +1,8 @@
+<div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet demo-card-wide mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title" style="background-image: url('{{ goal.getPicture().file.url ~ "?fm=jpg&w=350&h=350" }}')">
+        <h2 class="mdl-card__title-text">{{ goal.getName() }}</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+        {{ goal.getDescription()|markdown|raw }}
+    </div>
+</div>

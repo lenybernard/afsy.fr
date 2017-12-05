@@ -20,4 +20,5 @@ parameters:
 
     contentful_delivery_space: spaceID
     contentful_delivery_token: token
+    contentful_management_token: token
     googleMapsApiKey: key

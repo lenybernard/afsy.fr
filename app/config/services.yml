@@ -34,6 +34,11 @@ services:
     #     arguments:
     #         $someArgument: 'some_value'
 
+    Contentful\Management\Client:
+        arguments:
+            $token: '%contentful_management_token%'
+            $currentSpaceId: '%contentful_delivery_space%'
+
     twig.extension.text:
             class: Twig_Extensions_Extension_Text
             tags:

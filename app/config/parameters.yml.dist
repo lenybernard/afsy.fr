@@ -22,3 +22,4 @@ parameters:
     contentful_delivery_token: token
     contentful_management_token: token
     googleMapsApiKey: key
+    googleAnalyticsKey: key

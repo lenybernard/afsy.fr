@@ -39,6 +39,7 @@ twig:
     globals:
         disqusShortname: dev-afsy-fr
         googleMapAPIKEY: '%googleMapsApiKey%'
+        googleAnalyticsKey: '%googleAnalyticsKey%'
 
 # Doctrine Configuration
 doctrine:
